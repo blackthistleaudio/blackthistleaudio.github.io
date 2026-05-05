@@ -1,159 +1,1044 @@
-<!DOCTYPE HTML>
-<!--
-	Hyperspace by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Black Thistle Audio</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<meta name="referrer" content="origin">
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Black Thistle Audio — Professional Sound Engineering, Edinburgh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow+Condensed:wght@300;400;500;600;700&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0b;
+    --deep: #111114;
+    --panel: #16161a;
+    --border: #2a2a30;
+    --muted: #3a3a42;
+    --thistle: #8b5e8c;
+    --thistle-light: #b07ab1;
+    --thistle-glow: rgba(139,94,140,0.22);
+    --gold: #c9a84c;
+    --white: #f0ede8;
+    --grey: #9090a0;
+    --light-grey: #c8c8d4;
+  }
 
-		<!-- Sidebar -->
-			<section id="sidebar">
-				<div class="inner">
-					<nav>
-						<ul>
-							<li><a href="#intro">Welcome</a></li>
-							<li><a href="#one">What we do</a></li>
-							<li><a href="#three">Get in touch</a></li>
-						</ul>
-					</nav>
-				</div>
-			</section>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
 
-				<!-- Intro -->
-					<section id="intro" class="wrapper style1 fullscreen fade-up">
-						<div class="inner">
-							<a class="image"><img src="images/BTA.PNG" alt="" data-position="center center" /></a><h1>Black Thistle Audio</h1>
-							<p>Black Thistle Audio provide sound engineering services in Edinburgh, Scotland.</br></p>
-							<p>At Black Thistle Audio, we specialize in delivering exceptional live sound and production services across Edinburgh, the Lothians, Fife, and the Scottish Borders. From intimate venues to large-scale festivals, our experienced engineers and state-of-the-art equipment ensure every performance resonates with clarity and power.</br></p>
-							<ul class="actions">
-								<li><a href="#one" class="button scrolly">Learn more</a></li>
-							</ul>
-						</div>
-					</section>
+  /* grain overlay on everything */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9998;
+  }
 
-				<!-- One -->
-					<section id="one" class="wrapper style2 spotlights">
-						<section>
-							<a href="images/Pic01.jpg" class="image"><img src="images/Pic01.jpg" alt="" data-position="center center" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Live Music</h2>
-									<p>Live Music from bars to theatres, with experience from small sound systems all the way up to D&B Audiotechnik line arrays</p>
-									<ul class="actions">
-										<li><a href="#three" class="button">Get in Touch</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-						<section>
-							<a href="#" class="image"><img src="images/pic02.jpg" alt="" data-position="top center" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Streaming</h2>
-									<p>Streaming events from speech to music on to video platforms such as Youtube, quality sound can get overlooked, get in touch to see how we can help prevent disastrous audio</p>
-									<ul class="actions">
-										<li><a href="#three" class="button">Get in Touch</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-						<section>
-							<a href="#" class="image"><img src="images/pic03.jpg" alt="" data-position="25% 25%" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Live Recording</h2>
-									<p>Wanting to multitrack record your live performance, or your churches worship set? Get in touch to see how we can help</p>
-									<ul class="actions">
-										<li><a href="#three" class="button">Get in Touch</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-					</section>
+  /* ─────────────────────────────
+     NAV
+  ───────────────────────────── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.4rem 3.5rem;
+    background: rgba(10,10,11,0.82);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(42,42,48,0.6);
+    transition: background 0.3s;
+  }
+  .nav-logo {
+    font-family: 'Montserrat', monospace;
+    font-size: 1.05rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--thistle-light); }
+  .nav-links { display: flex; gap: 2.8rem; list-style: none; }
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--grey);
+    text-decoration: none;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-cta {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--thistle-light);
+    text-decoration: none;
+    border: 1px solid var(--thistle);
+    padding: 0.55rem 1.4rem;
+    transition: background 0.25s, color 0.25s;
+  }
+  .nav-cta:hover { background: var(--thistle); color: var(--white); }
 
-			
+  /* ─────────────────────────────
+     HERO — big concert crowd bg
+  ───────────────────────────── */
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 3.5rem 8rem;
+    overflow: hidden;
+  }
+  #hero .bg {
+    position: absolute; inset: 0;
+    background-image: url('IMG_7180.JPEG');
+    background-size: cover;
+    background-position: center 35%;
+    transform: scale(1.06);
+    animation: bgZoom 20s ease-in-out infinite alternate;
+  }
+  #hero .bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(175deg, rgba(10,10,11,0.25) 0%, rgba(10,10,11,0.55) 50%, rgba(10,10,11,0.96) 100%);
+  }
+  @keyframes bgZoom { from{transform:scale(1.06)} to{transform:scale(1.0)} }
 
-				<!-- Three -->
-					<section id="three" class="wrapper style4 fade-up">
-						<div class="inner">
-							<h2>Get in touch</h2>
-							<p>We're excited to hear about your next project and would love to know how we can help! The more detail you give us, the more we can help.</p>
-							<div class="split style1">
-								<section>
-									<form method="post" action="https://formspree.io/f/xoqrvwjp">
-										<div class="fields">
-											<div class="field half">
-												<label for="name">Name</label>
-												<input type="text" name="name" id="name" />
-											</div>
-											<div class="field half">
-												<label for="email">Email</label>
-												<input type="text" name="email" id="email" />
-											</div>
-											<div class="field">
-												<label for="message">Message</label>
-												<textarea name="message" id="message" rows="5"></textarea>
-											</div>
-										</div>
-										<ul class="actions">
-											<li><a href="" class="button submit">Send Message</a></li>
-										</ul>
-									</form>
-								</section>
-								<section>
-									<ul class="contact">
+  .hero-content { position: relative; z-index: 2; }
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--thistle-light);
+    margin-bottom: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    animation: fadeUp 0.8s 0.3s both;
+  }
+  .hero-eyebrow::before { content:''; width:2.5rem; height:1px; background:var(--thistle); display:block; }
+  .hero-title {
+    font-family: 'Montserrat', monospace;
+    font-size: clamp(4.5rem, 9.5vw, 10rem);
+    font-weight: 300;
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.8s 0.45s both;
+  }
+  .hero-title em { font-style: italic; color: var(--thistle-light); display: block; }
+  .hero-sub {
+    max-width: 42rem;
+    font-size: 1.05rem;
+    color: var(--light-grey);
+    line-height: 1.85;
+    margin-bottom: 3.5rem;
+    animation: fadeUp 0.8s 0.6s both;
+  }
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    animation: fadeUp 0.8s 0.75s both;
+  }
+  .btn-primary {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--black); background: var(--white);
+    text-decoration: none; padding: 1rem 2.6rem;
+    transition: background 0.25s, transform 0.2s; display: inline-block;
+  }
+  .btn-primary:hover { background: var(--thistle-light); transform: translateY(-2px); }
+  .btn-ghost {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.78rem; font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--grey); text-decoration: none;
+    display: flex; align-items: center; gap: 0.6rem;
+    transition: color 0.25s;
+  }
+  .btn-ghost::after { content:'→'; transition: transform 0.25s; }
+  .btn-ghost:hover { color: var(--white); }
+  .btn-ghost:hover::after { transform: translateX(5px); }
 
-										<li>
-											<h3>Email</h3>
-											<a href="#">sound@btaudio.co.uk</a>
-										</li>
-										<li>
-											<h3>Phone</h3>
-											<span>0131 358 3353</span>
-										</li>
-										<li>
-											<h3>Social</h3>
-											<ul class="icons">
-												<li><a href="https://www.facebook.com/BlackThistleAudio" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-												</ul>
-										</li>
-									</ul>
-								</section>
-							</div>
-						</div>
-					</section>
+  .hero-scroll {
+    position: absolute; bottom: 3rem; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    animation: fadeUp 1s 1.1s both; z-index: 2;
+  }
+  .hero-scroll span {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted);
+  }
+  .hero-scroll-line {
+    width: 1px; height: 44px;
+    background: linear-gradient(to bottom, var(--muted), transparent);
+    animation: pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:0.3} 50%{opacity:1} }
 
-			</div>
+  /* ─────────────────────────────
+     STAT BAR (after hero)
+  ───────────────────────────── */
+  .stat-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--deep);
+  }
+  .stat-item {
+    padding: 2.2rem 3rem;
+    border-right: 1px solid var(--border);
+    display: flex; flex-direction: column; gap: 0.3rem;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Montserrat', monospace;
+    font-size: 3rem; font-weight: 300; line-height: 1;
+    color: var(--white);
+  }
+  .stat-num sup { font-size: 1.4rem; color: var(--thistle-light); vertical-align: super; }
+  .stat-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.65rem; font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--grey);
+  }
 
-		<!-- Footer -->
-			<footer id="footer" class="wrapper style1-alt">
-				<div class="inner">
-					<ul class="menu">
-						<li>&copy; Black Thistle Audio. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
-				</div>
-			</footer>
+  /* ─────────────────────────────
+     ABOUT — mixing desk bg
+  ───────────────────────────── */
+  #about {
+    position: relative;
+    padding: 9rem 3.5rem;
+    overflow: hidden;
+  }
+  #about .bg {
+    position: absolute; inset: 0;
+    background-image: url('IMG_3715.JPEG');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  #about .bg::after {
+    content: ''; position: absolute; inset: 0;
+    background:
+      linear-gradient(105deg, rgba(10,10,11,0.97) 0%, rgba(10,10,11,0.92) 45%, rgba(10,10,11,0.6) 75%, rgba(10,10,11,0.3) 100%);
+  }
+  .about-inner {
+    position: relative; z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8rem;
+    align-items: center;
+    max-width: 1200px;
+  }
+  .about-text p {
+    color: var(--light-grey); font-size: 1rem; line-height: 1.95; margin-bottom: 1.6rem;
+  }
+  .coverage-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2.2rem; }
+  .chip {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--thistle-light);
+    border: 1px solid rgba(139,94,140,0.4);
+    padding: 0.4rem 1rem;
+    background: rgba(139,94,140,0.1);
+    backdrop-filter: blur(4px);
+  }
+  /* right side — glassy quote card */
+  .about-card {
+    border: 1px solid rgba(176,122,177,0.2);
+    background: rgba(22,22,26,0.5);
+    backdrop-filter: blur(12px);
+    padding: 3.5rem;
+    position: relative;
+  }
+  .about-card::before {
+    content: '\201C';
+    font-family: 'Montserrat', monospace;
+    font-size: 8rem;
+    line-height: 0.7;
+    color: var(--thistle);
+    opacity: 0.3;
+    position: absolute;
+    top: 2rem; left: 2.5rem;
+  }
+  .about-card-quote {
+    font-family: 'Montserrat', monospace;
+    font-size: 1.6rem; font-weight: 300; font-style: italic;
+    line-height: 1.5; color: var(--white);
+    margin-bottom: 2rem; margin-top: 1.5rem;
+  }
+  .about-card-attr {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--thistle-light);
+  }
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+  /* ─────────────────────────────
+     SERVICES — stage / PA bg
+  ───────────────────────────── */
+  #services {
+    position: relative;
+    padding: 9rem 3.5rem;
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+  }
+  #services .bg {
+    position: absolute; inset: 0;
+    background-image: url('IMG_4139.JPEG');
+    background-size: cover;
+    background-position: center 60%;
+    background-attachment: fixed;
+  }
+  #services .bg::after {
+    content: ''; position: absolute; inset: 0;
+    background: rgba(10,10,11,0.88);
+  }
+  .services-inner { position: relative; z-index: 2; }
+  .services-head {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; margin-bottom: 5rem; align-items: end;
+  }
+  .services-intro { color: var(--light-grey); font-size: 1rem; line-height: 1.9; }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: rgba(42,42,48,0.6);
+  }
+  .service-card {
+    background: rgba(16,16,20,0.75);
+    backdrop-filter: blur(8px);
+    padding: 2.8rem 2.5rem;
+    position: relative; overflow: hidden;
+    transition: background 0.3s;
+    border-top: 1px solid transparent;
+    transition: background 0.3s, border-color 0.3s;
+  }
+  .service-card:hover {
+    background: rgba(22,22,28,0.92);
+    border-top-color: var(--thistle);
+  }
+  .service-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.65rem; font-weight: 500;
+    letter-spacing: 0.28em; color: var(--thistle); margin-bottom: 1.5rem;
+  }
+  .service-name {
+    font-family: 'Montserrat', monospace;
+    font-size: 1.5rem; font-weight: 400; margin-bottom: 1rem; color: var(--white);
+  }
+  .service-desc { font-size: 0.88rem; color: var(--grey); line-height: 1.8; }
 
-	</body>
+  /* ─────────────────────────────
+     NOTABLE — spotlight performer bg
+  ───────────────────────────── */
+  #notable {
+    position: relative;
+    padding: 9rem 3.5rem;
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+  }
+  #notable .bg {
+    position: absolute; inset: 0;
+    background-image: url('IMG_6545.JPEG');
+    background-size: cover;
+    background-position: center 30%;
+    background-attachment: fixed;
+  }
+  #notable .bg::after {
+    content: ''; position: absolute; inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(10,10,11,0.9) 0%, rgba(10,10,11,0.82) 100%);
+  }
+  .notable-inner { position: relative; z-index: 2; }
+  .notable-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 4rem; gap: 2rem; }
+  .notable-intro { max-width: 36rem; color: var(--grey); font-size: 0.95rem; line-height: 1.8; }
+  .names-list {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    border: 1px solid rgba(42,42,48,0.6);
+  }
+  .name-item {
+    padding: 1.7rem 2rem;
+    border-bottom: 1px solid rgba(42,42,48,0.6);
+    border-right: 1px solid rgba(42,42,48,0.6);
+    position: relative;
+    transition: background 0.25s;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(10,10,11,0.45);
+    backdrop-filter: blur(6px);
+  }
+  .name-item:nth-child(even) { border-right: none; }
+  .name-item:nth-last-child(-n+2) { border-bottom: none; }
+  .name-item:hover { background: rgba(22,22,28,0.85); }
+  .name-item:hover::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:var(--thistle); }
+  .name-person { font-family: 'Montserrat', monospace; font-size: 1.25rem; font-weight: 400; color: var(--white); }
+  .name-role { font-family: 'Barlow Condensed', sans-serif; font-size: 0.65rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--grey); margin-top: 0.2rem; }
+  .name-type {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 0.6rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--thistle);
+    background: rgba(139,94,140,0.15); border: 1px solid rgba(139,94,140,0.3);
+    padding: 0.25rem 0.75rem; flex-shrink: 0; backdrop-filter: blur(4px);
+  }
+
+  /* ─────────────────────────────
+     EQUIPMENT — faders close-up bg
+  ───────────────────────────── */
+  #equipment {
+    position: relative;
+    padding: 9rem 3.5rem;
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+  }
+  #equipment .bg {
+    position: absolute; inset: 0;
+    background-image: url('IMG_4262.JPEG');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+  #equipment .bg::after {
+    content: ''; position: absolute; inset: 0;
+    background:
+      linear-gradient(to right, rgba(10,10,11,0.97) 0%, rgba(10,10,11,0.88) 55%, rgba(10,10,11,0.7) 100%);
+  }
+  .equip-inner {
+    position: relative; z-index: 2;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 7rem; align-items: start;
+  }
+  .equip-list { display: flex; flex-direction: column; gap: 0px; }
+  .equip-item {
+    display: flex; align-items: flex-start; gap: 2rem;
+    padding: 1.8rem 0;
+    border-bottom: 1px solid rgba(42,42,48,0.5);
+    transition: padding-left 0.3s;
+  }
+  .equip-item:first-child { border-top: 1px solid rgba(42,42,48,0.5); }
+  .equip-item:hover { padding-left: 0.8rem; }
+  .equip-item-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.62rem; font-weight: 500; letter-spacing: 0.2em;
+    color: var(--thistle); min-width: 2rem; padding-top: 0.2rem;
+  }
+  .equip-item-name {
+    font-family: 'Montserrat', monospace;
+    font-size: 1.25rem; font-weight: 400; color: var(--white); margin-bottom: 0.3rem;
+  }
+  .equip-item-desc { font-size: 0.82rem; color: var(--grey); line-height: 1.7; }
+
+  /* right side — glassy highlights panel */
+  .equip-panel {
+    background: rgba(22,22,26,0.55);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(176,122,177,0.18);
+    padding: 3rem;
+    position: sticky;
+    top: 8rem;
+  }
+  .equip-panel-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.65rem; font-weight: 500;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--thistle-light); margin-bottom: 2rem;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .equip-panel-label::before { content:''; display:block; width:1.5rem; height:1px; background:var(--thistle); }
+  .equip-highlight {
+    font-family: 'Montserrat', monospace;
+    font-size: 2.2rem; font-weight: 300; font-style: italic;
+    color: var(--white); line-height: 1.3; margin-bottom: 2rem;
+  }
+  .equip-highlight em { color: var(--thistle-light); font-style: normal; }
+  .equip-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .equip-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.65rem; font-weight: 500;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--light-grey);
+    border: 1px solid var(--border);
+    padding: 0.35rem 0.9rem;
+    background: rgba(42,42,48,0.3);
+  }
+
+  /* ─────────────────────────────
+     PROCESS — engineer bg
+  ───────────────────────────── */
+  #process {
+    position: relative;
+    padding: 9rem 3.5rem;
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+  }
+  #process .bg {
+    position: absolute; inset: 0;
+    background-image: url('IMG_4641.JPEG');
+    background-size: cover;
+    background-position: center 25%;
+    background-attachment: fixed;
+  }
+  #process .bg::after {
+    content: ''; position: absolute; inset: 0;
+    background: rgba(10,10,11,0.88);
+  }
+  .process-inner { position: relative; z-index: 2; }
+  .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 5rem; }
+  .process-step {
+    padding: 3rem 2.5rem;
+    border-right: 1px solid rgba(42,42,48,0.5);
+    position: relative;
+    transition: background 0.3s;
+    background: rgba(10,10,11,0.3);
+    backdrop-filter: blur(4px);
+  }
+  .process-step:last-child { border-right: none; }
+  .process-step:hover { background: rgba(22,22,28,0.7); }
+  .process-step::before {
+    content: attr(data-num);
+    font-family: 'Montserrat', monospace;
+    font-size: 5rem; font-weight: 300;
+    color: rgba(139,94,140,0.12);
+    position: absolute;
+    top: 1.5rem; right: 1.5rem;
+    line-height: 1;
+  }
+  .process-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.62rem; font-weight: 500;
+    letter-spacing: 0.28em; color: var(--thistle); margin-bottom: 1.2rem;
+  }
+  .process-name {
+    font-family: 'Montserrat', monospace;
+    font-size: 1.45rem; font-weight: 400; color: var(--white); margin-bottom: 1rem;
+  }
+  .process-desc { font-size: 0.85rem; color: var(--grey); line-height: 1.8; }
+
+  /* ─────────────────────────────
+     CONTACT — stage bg
+  ───────────────────────────── */
+  #contact {
+    position: relative;
+    padding: 9rem 3.5rem;
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+  }
+  #contact .bg {
+    position: absolute; inset: 0;
+    background-image: url('mic.jpg');
+    background-size: cover;
+    background-position: center 40%;
+    background-attachment: fixed;
+  }
+  #contact .bg::after {
+    content: ''; position: absolute; inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(10,10,11,0.9) 0%, rgba(10,10,11,0.85) 100%);
+  }
+  .contact-inner { position: relative; z-index: 2; }
+  .contact-grid {
+    display: grid; grid-template-columns: 1.1fr 0.9fr;
+    gap: 7rem; align-items: start; margin-top: 4rem;
+  }
+  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .form-field { display: flex; flex-direction: column; gap: 0.5rem; }
+  .form-field label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.65rem; font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--grey);
+  }
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    background: rgba(16,16,20,0.75);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(42,42,48,0.8);
+    color: var(--white);
+    padding: 0.9rem 1rem;
+    font-family: 'Barlow', sans-serif;
+    font-size: 0.9rem; font-weight: 300;
+    outline: none;
+    transition: border-color 0.25s;
+    resize: none;
+    -webkit-appearance: none;
+  }
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus { border-color: var(--thistle); }
+  .form-field select option { background: #1a1a20; }
+  .form-submit {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--black); background: var(--white);
+    border: none; padding: 1.1rem 2.5rem;
+    cursor: pointer; transition: background 0.25s, transform 0.2s;
+    align-self: flex-start; margin-top: 0.5rem;
+  }
+  .form-submit:hover { background: var(--thistle-light); transform: translateY(-2px); }
+
+  .contact-info-panel {
+    background: rgba(16,16,20,0.6);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(42,42,48,0.6);
+    padding: 3rem;
+  }
+  .contact-info-panel p { color: var(--grey); font-size: 0.95rem; line-height: 1.9; margin-bottom: 2.5rem; }
+  .contact-details { display: flex; flex-direction: column; gap: 1.6rem; }
+  .contact-item { display: flex; gap: 1.2rem; align-items: flex-start; }
+  .contact-item-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--thistle-light); min-width: 5rem; padding-top: 0.1rem;
+  }
+  .contact-item-val { font-size: 0.9rem; color: var(--light-grey); line-height: 1.7; }
+  .contact-item-val a { color: var(--light-grey); text-decoration: none; transition: color 0.2s; }
+  .contact-item-val a:hover { color: var(--thistle-light); }
+
+  /* ─────────────────────────────
+     SHARED HEADING STYLES
+  ───────────────────────────── */
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.38em; text-transform: uppercase;
+    color: var(--thistle-light); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .section-label::before { content:''; display:block; width:1.8rem; height:1px; background:var(--thistle); }
+  .section-title {
+    font-family: 'Montserrat', monospace;
+    font-size: clamp(2.6rem, 4.5vw, 4.4rem);
+    font-weight: 300; line-height: 1.08; margin-bottom: 2rem;
+  }
+  .section-title em { font-style: italic; color: var(--thistle-light); }
+
+  /* ─────────────────────────────
+     FOOTER
+  ───────────────────────────── */
+  footer {
+    padding: 2.5rem 3.5rem;
+    border-top: 1px solid var(--border);
+    background: var(--black);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-logo {
+    font-family: 'Montserrat', monospace;
+    font-size: 0.9rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--grey);
+  }
+  .footer-logo span { color: var(--thistle-light); }
+  .footer-copy {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.62rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--muted);
+  }
+
+  /* ─────────────────────────────
+     ANIMATIONS
+  ───────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(30px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  .reveal { opacity:0; transform:translateY(26px); transition: opacity 0.75s ease, transform 0.75s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* ─────────────────────────────
+     RESPONSIVE
+  ───────────────────────────── */
+  @media (max-width: 1100px) {
+    nav { padding: 1.2rem 2rem; }
+    #hero, #about, #services, #equipment, #process, #contact, #notable { padding: 6rem 2rem; }
+    #hero { padding-bottom: 7rem; }
+    .stat-bar { grid-template-columns: repeat(2,1fr); }
+    .stat-item:nth-child(2) { border-right: none; }
+    .about-inner, .equip-inner, .contact-grid { grid-template-columns: 1fr; gap: 3.5rem; }
+    .services-head { grid-template-columns: 1fr; gap: 2rem; }
+    .process-grid { grid-template-columns: repeat(2,1fr); }
+    .process-step { border-bottom: 1px solid rgba(42,42,48,0.5); }
+    .process-step:nth-child(even) { border-right: none; }
+    footer { padding: 2rem; }
+    #about .bg, #services .bg, #equipment .bg, #process .bg, #contact .bg, #notable .bg {
+      background-attachment: scroll;
+    }
+  }
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+    .hero-title { font-size: clamp(3.5rem, 12vw, 6rem); }
+    .services-grid { grid-template-columns: 1fr; }
+    .names-list { grid-template-columns: 1fr; }
+    .name-item { border-right: none; }
+    .name-item:nth-last-child(1) { border-bottom: none; }
+    .name-item:nth-last-child(2) { border-bottom: 1px solid rgba(42,42,48,0.6); }
+    .process-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+    .stat-bar { grid-template-columns: repeat(2,1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#" class="nav-logo">Black <span>Thistle</span> Audio</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#notable">Notable Work</a></li>
+    <li><a href="#equipment">Equipment</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get in Touch</a>
+</nav>
+
+<!-- ── HERO — concert crowd bg ── -->
+<section id="hero">
+  <div class="bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Edinburgh-based Sound Engineering</div>
+    <h1 class="hero-title">Sound that<br><em>moves you.</em></h1>
+    <p class="hero-sub">Professional live sound and production services across Edinburgh, the Lothians, Fife, and the Scottish Borders. From intimate venues to major festivals — every performance delivered with precision and power.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Request a Quote</a>
+      <a href="#services" class="btn-ghost">Our Services</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span></span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ── STAT BAR ── -->
+<div class="stat-bar">
+  <div class="stat-item reveal">
+    <div class="stat-num">15<sup>+</sup></div>
+    <div class="stat-label">Years Experience</div>
+  </div>
+  <div class="stat-item reveal reveal-delay-1">
+    <div class="stat-num">500<sup>+</sup></div>
+    <div class="stat-label">Events Delivered</div>
+  </div>
+  <div class="stat-item reveal reveal-delay-2">
+    <div class="stat-num">100<sup>%</sup></div>
+    <div class="stat-label">Client Focused</div>
+  </div>
+  <div class="stat-item reveal reveal-delay-3">
+    <div class="stat-num">1<sup>st</sup></div>
+    <div class="stat-label">Class Sound. Every Time.</div>
+  </div>
+</div>
+
+<!-- ── ABOUT — mixing desk bg bleeds through ── -->
+<section id="about">
+  <div class="bg"></div>
+  <div class="about-inner">
+    <div class="about-text reveal">
+      <div class="section-label">Who We Are</div>
+      <h2 class="section-title">Built on <em>craft</em>,<br>driven by detail</h2>
+      <p>Black Thistle Audio was founded on a simple belief: great sound is never an accident. It's the result of experienced engineers, quality equipment, meticulous preparation, and a genuine commitment to getting it right.</p>
+      <p>Based in Edinburgh, we've worked across the full spectrum of live events — from intimate fringe venues and corporate boardrooms to major outdoor stages. We know Scotland's venues, we understand the challenges of its weather and acoustics, and we bring the same level of care whether the audience is 50 or 5,000.</p>
+      <p>Our engineers are hands-on at every stage — from initial consultation through to the final soundcheck. This is our craft!</p>
+      <div class="coverage-chips">
+        <span class="chip">Edinburgh</span>
+        <span class="chip">East Lothian</span>
+        <span class="chip">West Lothian</span>
+        <span class="chip">Midlothian</span>
+        <span class="chip">Fife</span>
+        <span class="chip">Scottish Borders</span>
+      </div>
+    </div>
+    <div class="about-card reveal reveal-delay-2">
+      <div class="about-card-quote">The difference between a good event and a great one is often the sound.</div>
+      <div class="about-card-attr">— Black Thistle Audio</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES — festival crowd bg ── -->
+<section id="services">
+  <div class="bg"></div>
+  <div class="services-inner">
+    <div class="services-head reveal">
+      <div>
+        <div class="section-label">What We Do</div>
+        <h2 class="section-title">Complete <em>sound</em><br>solutions</h2>
+      </div>
+      <p class="services-intro">Whether you're running a corporate conference, a live music event, or a full festival stage, we bring the expertise and equipment to make it sound exactly right. Every time.</p>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <h3 class="service-name">Live Sound Reinforcement</h3>
+        <p class="service-desc">FOH and monitor mixing for concerts, festivals, and live events of all scales. Crystal-clear reinforcement from intimate venues to large outdoor stages.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <h3 class="service-name">Corporate Events & Conferences</h3>
+        <p class="service-desc">Professional audio for speeches, panel discussions, and presentations. Consistent, intelligible sound that keeps your audience engaged throughout.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <h3 class="service-name">Venue & Festival Production</h3>
+        <p class="service-desc">End-to-end production support for venues and festival stages. System design, rigging coordination, and on-the-day engineering from load-in to final note.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <h3 class="service-name">PA & Equipment Hire</h3>
+        <p class="service-desc">State-of-the-art PA systems, stage monitors, microphones, and outboard gear for hire. Delivery, setup, and technical support included.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">05</div>
+        <h3 class="service-name">System Design & Consultation</h3>
+        <p class="service-desc">Acoustic analysis, system specification, and installation advice for permanent or touring rigs. Right solution for your space and budget.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-num">06</div>
+        <h3 class="service-name">Broadcast & Streaming Audio</h3>
+        <p class="service-desc">Clean, broadcast-quality feeds for livestreaming, recording, and hybrid events. Seamless integration with video production teams.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── NOTABLE — outdoor gig bg ── -->
+<section id="notable">
+  <div class="bg"></div>
+  <div class="notable-inner">
+    <div class="notable-head reveal">
+      <div>
+        <div class="section-label">Our Work</div>
+        <h2 class="section-title">Trusted to <br><em>deliver sound on</em> productions featuring:</h2>
+      </div>
+      <p class="notable-intro">We've had the privilege of providing professional sound reinforcement for some of Scotland's most prominent figures in politics, media, arts, and entertainment.</p>
+    </div>
+    <div class="names-list reveal">
+      <div class="name-item"><div><div class="name-person">Ruth Davidson</div><div class="name-role">MSP, Former Scottish Conservative Leader</div></div><span class="name-type">Political</span></div>
+      <div class="name-item"><div><div class="name-person">Anas Sarwar</div><div class="name-role">MSP, Scottish Labour Leader</div></div><span class="name-type">Political</span></div>
+      <div class="name-item"><div><div class="name-person">Iain Gray</div><div class="name-role">MSP</div></div><span class="name-type">Political</span></div>
+      <div class="name-item"><div><div class="name-person">Jason Leitch</div><div class="name-role">Clinical Director, Scottish Government</div></div><span class="name-type">Government</span></div>
+      <div class="name-item"><div><div class="name-person">Hugh Pym</div><div class="name-role">BBC Health Editor</div></div><span class="name-type">Media</span></div>
+      <div class="name-item"><div><div class="name-person">Paul Riley</div><div class="name-role">Actor — Still Game (Winston Ingram)</div></div><span class="name-type">Arts</span></div>
+      <div class="name-item"><div><div class="name-person">Sandi Thom</div><div class="name-role">Singer-Songwriter</div></div><span class="name-type">Music</span></div>
+      <div class="name-item"><div><div class="name-person">Space</div><div class="name-role">Band</div></div><span class="name-type">Music</span></div>
+      <div class="name-item"><div><div class="name-person">The Bluebells</div><div class="name-role">Band</div></div><span class="name-type">Music</span></div>
+      <div class="name-item"><div><div class="name-person">Iona Fyfe</div><div class="name-role">Folk Artist</div></div><span class="name-type">Music</span></div>
+      <div class="name-item"><div><div class="name-person">Martin Simpson</div><div class="name-role">Guitarist & Folk Artist</div></div><span class="name-type">Music</span></div>
+      <div class="name-item"><div><div class="name-person">QFX</div><div class="name-role">Music Act</div></div><span class="name-type">Music</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EQUIPMENT — mixer faders bg ── -->
+<section id="equipment">
+  <div class="bg"></div>
+  <div class="equip-inner">
+    <div class="equip-list reveal">
+      <div class="section-label">Kit &amp; Gear</div>
+      <h2 class="section-title">Professional <em>equipment</em><br>for every scale</h2>
+      <div class="equip-item">
+        <div class="equip-item-num">01</div>
+        <div><div class="equip-item-name">Digital FOH Consoles</div><div class="equip-item-desc">Allen & Heath digital desks for full control in any environment.</div></div>
+      </div>
+      <div class="equip-item">
+        <div class="equip-item-num">02</div>
+        <div><div class="equip-item-name">Line Array PA Systems</div><div class="equip-item-desc">Scalable line array and point-source systems suited from 50-seat rooms to outdoor festivals.</div></div>
+      </div>
+      <div class="equip-item">
+        <div class="equip-item-num">03</div>
+        <div><div class="equip-item-name">In-Ear & Stage Monitoring</div><div class="equip-item-desc">IEM systems and wedge monitors — giving performers exactly what they need to play their best.</div></div>
+      </div>
+      <div class="equip-item">
+        <div class="equip-item-num">04</div>
+        <div><div class="equip-item-name">Microphones & DIs</div><div class="equip-item-desc">Shure, Sennheiser, AKG, and Audix across full vocal and instrument mic inventories.</div></div>
+      </div>
+      <div class="equip-item">
+        <div class="equip-item-num">05</div>
+        <div><div class="equip-item-name">Signal Processing & Outboard</div><div class="equip-item-desc">Drive racks, dynamics, EQ, and effects to shape and protect the system at every stage.</div></div>
+      </div>
+      <div class="equip-item">
+        <div class="equip-item-num">06</div>
+        <div><div class="equip-item-name">Cabling & Infrastructure</div><div class="equip-item-desc">Full stage boxes, multicore, power distribution — everything needed for a clean, safe install.</div></div>
+      </div>
+    </div>
+    <div class="equip-panel reveal reveal-delay-2">
+      <div class="equip-panel-label">The Right Tool For The Job</div>
+      <div class="equip-highlight">State-of-the-art gear, <em>operated by people who know how to use it.</em></div>
+      <div class="equip-tags">
+        <span class="equip-tag">Allen & Heath</span>
+        <span class="equip-tag">d&b Audiotechnik</span>
+        <span class="equip-tag">L-Acoustics</span>
+        <span class="equip-tag">Shure</span>
+        <span class="equip-tag">Sennheiser</span>
+        <span class="equip-tag">Audix</span>
+        <span class="equip-tag">AKG</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROCESS — engineer bg ── -->
+<section id="process">
+  <div class="bg"></div>
+  <div class="process-inner">
+    <div class="reveal">
+      <div class="section-label">How We Work</div>
+      <h2 class="section-title">From brief to<br><em>final note</em></h2>
+    </div>
+    <div class="process-grid">
+      <div class="process-step reveal" data-num="01">
+        <div class="process-num">01</div>
+        <div class="process-name">Brief & Scope</div>
+        <p class="process-desc">We start by understanding your event — venue, audience size, programme, and technical constraints. No assumptions made.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-1" data-num="02">
+        <div class="process-num">02</div>
+        <div class="process-name">System Design</div>
+        <p class="process-desc">PA selection, mic plots, monitoring setup — everything specified and planned before load-in day. Nothing left to chance.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-2" data-num="03">
+        <div class="process-num">03</div>
+        <div class="process-name">Load-In & Line Check</div>
+        <p class="process-desc">On-site setup, rigging, cabling, and a thorough line check before soundcheck. We troubleshoot before the pressure's on.</p>
+      </div>
+      <div class="process-step reveal reveal-delay-3" data-num="04">
+        <div class="process-num">04</div>
+        <div class="process-name">Event Day</div>
+        <p class="process-desc">Experienced engineers at FOH and monitors throughout. Reactive, precise, and always focused on the performance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT — stage lighting bg ── -->
+<section id="contact">
+  <div class="bg"></div>
+  <div class="contact-inner">
+
+
+    <div class="section-label reveal">Get In Touch</div>
+    <h2 class="section-title reveal">Let's talk about<br>your <em>next event</em></h2>
+    <div class="contact-grid">
+      <form class="contact-form reveal" method="post" action="https://formspree.io/f/xoqrvwjp">
+        <div class="form-row">
+          <div class="form-field">
+            <label>Name</label>
+            <input type="text" name="name" placeholder="Your name" required>
+          </div>
+          <div class="form-field">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="your@email.com" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label>Event Type</label>
+            <select name="event_type">
+              <option value="" disabled selected>Select type...</option>
+              <option>Live Music</option>
+              <option>Corporate / Conference</option>
+              <option>Festival</option>
+              <option>Theatre / Performance</option>
+              <option>Private Event</option>
+              <option>Equipment Hire</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Approx. Date</label>
+            <input type="text" name="event_date" placeholder="When is your event?">
+          </div>
+        </div>
+        <div class="form-field">
+          <label>Venue / Location</label>
+          <input type="text" name="venue" placeholder="Where is your event?">
+        </div>
+        <div class="form-field">
+          <label>Tell us more</label>
+          <textarea rows="5" name="message" placeholder="Audience size, specific requirements, budget range..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send Enquiry</button>
+      </form>
+
+      <div class="contact-info-panel reveal reveal-delay-2">
+        <p>We respond to all enquiries within one business day. For urgent requests or same-week bookings, contact us directly.</p>
+        <div class="contact-details">
+          <div class="contact-item">
+            <span class="contact-item-label">Based</span>
+            <span class="contact-item-val">Edinburgh, Scotland</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item-label">Coverage</span>
+            <span class="contact-item-val">Edinburgh · East, West & Midlothian<br>Fife · Scottish Borders</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item-label">Email</span>
+            <span class="contact-item-val"><a href="mailto:info@blackthistleaudio.co.uk">info@blackthistleaudio.co.uk</a></span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item-label">Social</span>
+            <span class="contact-item-val">
+              <a href="#">Instagram</a> &nbsp;·&nbsp;
+              <a href="#">Facebook</a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">Black <span>Thistle</span> Audio</div>
+  <div class="footer-copy">© 2025 Black Thistle Audio · Edinburgh, Scotland · All rights reserved</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => obs.observe(el));
+
+  // Nav opacity on scroll
+  window.addEventListener(' ', () => {
+    document.querySelector('nav').style.background =
+      window.scrollY > 60 ? 'rgba(10,10,11,0.96)' : 'rgba(10,10,11,0.82)';
+  });
+</script>
+</body>
 </html>
